@@ -1,0 +1,25 @@
+"","Approach","Method","Data_source","Association","Corr","RSME","Initial_training_samples","Testing_samples"
+"1","Time series reconstruction","Light GBM","Passo Fundo","All climate time series",0.159744129505776,14.3761034736359,"30",181
+"2","Time series reconstruction","Lasso","Passo Fundo","All climate time series",0.172055928283818,15.7579761551761,"30",181
+"3","Time series reconstruction","Random Forests","Passo Fundo","All climate time series",0.195537765213401,12.3598286312682,"30",181
+"4","Time series reconstruction","Light GBM","Passo Fundo","All climate time series",0.174926382691691,13.5994430520506,"60",151
+"5","Time series reconstruction","Lasso","Passo Fundo","All climate time series",0.208757882133147,13.8119261222677,"60",151
+"6","Time series reconstruction","Random Forests","Passo Fundo","All climate time series",0.193858919250784,11.3796474451287,"60",151
+"7","Naive up to 3 lags","Light GBM","Passo Fundo","All climate time series",0.143558699669528,17.1087971334679,"30",181
+"8","Naive up to 3 lags","Random Forests","Passo Fundo","All climate time series",0.245064553050035,12.6822345410924,"30",181
+"9","Naive up to 3 lags","Lasso","Passo Fundo","All climate time series",0.286424409632754,15.6909128361028,"30",181
+"10","Naive up to 3 lags","Light GBM","Passo Fundo","All climate time series",0.21866736246376,14.910108870451,"60",151
+"11","Naive up to 3 lags","Random Forests","Passo Fundo","All climate time series",0.23930494949171,11.548402560687,"60",151
+"12","Naive up to 3 lags","Lasso","Passo Fundo","All climate time series",0.264622480496101,13.7598904007483,"60",151
+"13","Naive up to 6 lags","Light GBM","Passo Fundo","All climate time series",0.113994454003509,17.0621152355262,"30",181
+"14","Naive up to 6 lags","Random Forests","Passo Fundo","All climate time series",0.18828419148727,13.8313422972934,"30",181
+"15","Naive up to 6 lags","Lasso","Passo Fundo","All climate time series",0.28390927710786,15.6705020899091,"30",181
+"16","Naive up to 6 lags","Light GBM","Passo Fundo","All climate time series",0.188284976692891,13.3284326283104,"60",151
+"17","Naive up to 6 lags","Random Forests","Passo Fundo","All climate time series",0.228991883257702,11.8782046842562,"60",151
+"18","Naive up to 6 lags","Lasso","Passo Fundo","All climate time series",0.264684527675639,13.7422508306332,"60",151
+"19","All climate time series","Light GBM","Passo Fundo","All climate time series",0.0362325899422486,20.1959107301806,"30",181
+"20","All climate time series","Random Forests","Passo Fundo","All climate time series",0.0617115949623565,16.7951074885602,"30",181
+"21","All climate time series","Lasso","Passo Fundo","All climate time series",0.0467578929924459,15.6646033728969,"30",181
+"22","All climate time series","Light GBM","Passo Fundo","All climate time series",0.0532150393171498,18.1579918839983,"60",151
+"23","All climate time series","Random Forests","Passo Fundo","All climate time series",0.0572029754096766,15.4319257486827,"60",151
+"24","All climate time series","Lasso","Passo Fundo","All climate time series",0.063272048954635,13.7142874746173,"60",151

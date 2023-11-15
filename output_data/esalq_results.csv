@@ -1,0 +1,25 @@
+"","Approach","Method","Data_source","Association","Corr","RSME","Initial_training_samples","Testing_samples"
+"1","Time series reconstruction","Light GBM","ESALQ","All climate time series",0.0135182621550264,44.2557833967757,"30",78
+"2","Time series reconstruction","Lasso","ESALQ","All climate time series",0.0729329975064654,24.5788428703244,"30",78
+"3","Time series reconstruction","Random Forests","ESALQ","All climate time series",0.0407352642886406,24.5061478128243,"30",78
+"4","Time series reconstruction","Light GBM","ESALQ","All climate time series",0.0992587311171544,34.2308243786269,"60",48
+"5","Time series reconstruction","Lasso","ESALQ","All climate time series",0.128130908702888,23.6225080406809,"60",48
+"6","Time series reconstruction","Random Forests","ESALQ","All climate time series",0.0921243949234719,25.4917346587902,"60",48
+"7","Naive up to 3 lags","Light GBM","ESALQ","All climate time series",0.0806370662096712,36.4751424229041,"30",78
+"8","Naive up to 3 lags","Random Forests","ESALQ","All climate time series",0.0542373924215976,24.2364485018864,"30",78
+"9","Naive up to 3 lags","Lasso","ESALQ","All climate time series",0.123383023674932,24.583924808793,"30",78
+"10","Naive up to 3 lags","Light GBM","ESALQ","All climate time series",0.121350778421711,41.2894250969504,"60",48
+"11","Naive up to 3 lags","Random Forests","ESALQ","All climate time series",0.192128526224668,20.9283493161417,"60",48
+"12","Naive up to 3 lags","Lasso","ESALQ","All climate time series",0.167894729681049,23.6179948212783,"60",48
+"13","Naive up to 6 lags","Light GBM","ESALQ","All climate time series",0.0272464956786462,48.1519363277973,"30",78
+"14","Naive up to 6 lags","Random Forests","ESALQ","All climate time series",0.0260024317830907,27.2750103923987,"30",78
+"15","Naive up to 6 lags","Lasso","ESALQ","All climate time series",0.140373639423151,24.5580107347526,"30",78
+"16","Naive up to 6 lags","Light GBM","ESALQ","All climate time series",0.148827138287618,40.9892170286498,"60",48
+"17","Naive up to 6 lags","Random Forests","ESALQ","All climate time series",0.143251869369382,22.3017111503783,"60",48
+"18","Naive up to 6 lags","Lasso","ESALQ","All climate time series",0.233255338057169,23.6256968418166,"60",48
+"19","All climate time series","Light GBM","ESALQ","All climate time series",0.023055681494145,23.3216947957934,"30",78
+"20","All climate time series","Random Forests","ESALQ","All climate time series",0.118101355694225,23.7321245590237,"30",78
+"21","All climate time series","Lasso","ESALQ","All climate time series",0.0440859548271735,25.6309016183966,"30",78
+"22","All climate time series","Light GBM","ESALQ","All climate time series",0.0304065608296783,22.5316029147419,"60",48
+"23","All climate time series","Random Forests","ESALQ","All climate time series",0.0691096434711498,25.2663320338586,"60",48
+"24","All climate time series","Lasso","ESALQ","All climate time series",0.0361684423177648,24.5532176891139,"60",48

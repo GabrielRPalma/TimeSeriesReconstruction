@@ -1,0 +1,26 @@
+{
+    "id": "C8086593",
+    "path": "~/Desktop/Phd/Projects/ClimateCovariatesAppliedToInsectOutbreakPrediction/FinalAnalysis2023/02_simulation_study/02_arimax_simulation.r",
+    "project_path": "02_simulation_study/02_arimax_simulation.r",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1699949856558.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "307,0",
+        "scrollLine": "286"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1699949886,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1699949886625,
+    "read_only": false,
+    "read_only_alternatives": []
+}

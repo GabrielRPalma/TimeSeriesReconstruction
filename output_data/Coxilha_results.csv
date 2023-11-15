@@ -1,0 +1,25 @@
+"","Approach","Method","Data_source","Association","Corr","RSME","Initial_training_samples","Testing_samples"
+"1","Time series reconstruction","Light GBM","Coxilha","All climate time series",0.356854155784036,88.1492518784878,"30",181
+"2","Time series reconstruction","Lasso","Coxilha","All climate time series",0.00530539601364547,129.034978492835,"30",181
+"3","Time series reconstruction","Random Forests","Coxilha","All climate time series",0.280541594952674,91.6207596192156,"30",181
+"4","Time series reconstruction","Light GBM","Coxilha","All climate time series",0.351155199624348,82.6556521768357,"60",151
+"5","Time series reconstruction","Lasso","Coxilha","All climate time series",0.242525049003471,115.414101646781,"60",151
+"6","Time series reconstruction","Random Forests","Coxilha","All climate time series",0.30103527573426,84.0573102609119,"60",151
+"7","Naive up to 3 lags","Light GBM","Coxilha","All climate time series",0.34990693137618,100.505235383355,"30",181
+"8","Naive up to 3 lags","Random Forests","Coxilha","All climate time series",0.370030166456936,88.046060613421,"30",181
+"9","Naive up to 3 lags","Lasso","Coxilha","All climate time series",0.264421347122931,128.483714309957,"30",181
+"10","Naive up to 3 lags","Light GBM","Coxilha","All climate time series",0.293431067851157,95.0815068565945,"60",151
+"11","Naive up to 3 lags","Random Forests","Coxilha","All climate time series",0.338678334644257,84.7714648200521,"60",151
+"12","Naive up to 3 lags","Lasso","Coxilha","All climate time series",0.205145723182254,115.407754295698,"60",151
+"13","Naive up to 6 lags","Light GBM","Coxilha","All climate time series",0.240619502677206,119.452305087436,"30",181
+"14","Naive up to 6 lags","Random Forests","Coxilha","All climate time series",0.324243267724408,91.8380505114995,"30",181
+"15","Naive up to 6 lags","Lasso","Coxilha","All climate time series",0.235398210451514,128.473186472893,"30",181
+"16","Naive up to 6 lags","Light GBM","Coxilha","All climate time series",0.281966566433296,103.285761246484,"60",151
+"17","Naive up to 6 lags","Random Forests","Coxilha","All climate time series",0.342828938986781,83.9416246466631,"60",151
+"18","Naive up to 6 lags","Lasso","Coxilha","All climate time series",0.250373028265032,115.386878762329,"60",151
+"19","All climate time series","Light GBM","Coxilha","All climate time series",0.0395073857827732,139.675371486403,"30",181
+"20","All climate time series","Random Forests","Coxilha","All climate time series",0.048759277959748,122.220074582091,"30",181
+"21","All climate time series","Lasso","Coxilha","All climate time series",0.0613826763594351,128.483492853548,"30",181
+"22","All climate time series","Light GBM","Coxilha","All climate time series",0.0294715060612586,137.78835504176,"60",151
+"23","All climate time series","Random Forests","Coxilha","All climate time series",0.0108898592433387,122.752788346827,"60",151
+"24","All climate time series","Lasso","Coxilha","All climate time series",0.0315040091931637,115.408168650982,"60",151
