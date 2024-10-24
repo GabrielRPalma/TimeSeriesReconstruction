@@ -1,0 +1,13 @@
+"","Approach","Method","Data_source","Association","Corr","RSME","Initial_training_samples","Testing_samples"
+"1","All climate time series + 3 lags","Light GBM","Passo Fundo","All climate time series",0.192564915499037,17.1009999364207,"30",181
+"2","All climate time series + 3 lags","Random Forests","Passo Fundo","All climate time series",0.224186761882506,13.7727188536788,"30",181
+"3","All climate time series + 3 lags","Lasso","Passo Fundo","All climate time series",0.234199249467659,12.7352047136111,"30",181
+"4","All climate time series + 3 lags","Light GBM","Passo Fundo","All climate time series",0.236580158864231,13.3589824651543,"60",151
+"5","All climate time series + 3 lags","Random Forests","Passo Fundo","All climate time series",0.24979718032695,11.8511367134134,"60",151
+"6","All climate time series + 3 lags","Lasso","Passo Fundo","All climate time series",0.304744520607284,10.696236233079,"60",151
+"7","All climate time series + 6 lags","Light GBM","Passo Fundo","All climate time series",0.150101034478523,17.7373206241479,"30",181
+"8","All climate time series + 6 lags","Random Forests","Passo Fundo","All climate time series",0.173560646820422,14.7622205513166,"30",181
+"9","All climate time series + 6 lags","Lasso","Passo Fundo","All climate time series",0.162041899784077,14.013657405401,"30",181
+"10","All climate time series + 6 lags","Light GBM","Passo Fundo","All climate time series",0.24234639869763,12.7272542279869,"60",151
+"11","All climate time series + 6 lags","Random Forests","Passo Fundo","All climate time series",0.244349996396871,12.0350432672487,"60",151
+"12","All climate time series + 6 lags","Lasso","Passo Fundo","All climate time series",0.312203611802338,10.7365746132301,"60",151

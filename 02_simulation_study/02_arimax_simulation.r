@@ -20,7 +20,7 @@ passo_fundo_data <- passo_fundo_data %>% mutate(log_aphids = log(Aphids + 0.1))
 passo_fundo_data <- tibble(passo_fundo_data) %>%
   as_tsibble(., index = index)
 # Fitting a ARIMAX
-ar_climate <-5
+ar_climate <-1
 fit_arimax <- passo_fundo_data %>%
   model(ARIMA(log_aphids ~ 1 + lag(tmax, ar_climate) + lag(tmin, ar_climate) + lag(tmean, ar_climate) + 
                 lag(pmm, ar_climate) + lag(Ur, ar_climate) + lag(Wmax, ar_climate) + 

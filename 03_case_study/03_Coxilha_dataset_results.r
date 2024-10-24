@@ -32,3 +32,12 @@ sink()
 sink('output_data/Coxilha_reconstructed_features.csv')
 write.csv(Coxilha_results$reconstructed_features)
 sink()
+
+Coxilha_results_extra <- obtain_lags_and_climate_approaches_performance(data_source = 'Coxilha', 
+                                                     association = 'All climate time series', 
+                                                     time_series = coxilha_data)
+
+
+sink('output_data/Coxilha_results_extra.csv')
+write.csv(Coxilha_results_extra)
+sink()

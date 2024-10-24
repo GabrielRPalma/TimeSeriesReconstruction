@@ -38,3 +38,12 @@ sink()
 sink('output_data/passo_fundo_reconstructed_features.csv')
 write.csv(passo_fundo_results$reconstructed_features)
 sink()
+
+passo_fundo_results_extra <- obtain_lags_and_climate_approaches_performance(data_source = 'Passo Fundo', 
+                                                         association = 'All climate time series', 
+                                                         time_series = passo_fundo_data)
+
+
+sink('output_data/passo_fundo_results_extra.csv')
+write.csv(passo_fundo_results_extra)
+sink()

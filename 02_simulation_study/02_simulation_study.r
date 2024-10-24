@@ -19,7 +19,7 @@ colnames(passo_fundo_data) <- c("tmax", "tmin", "tmean",  "pmm",
                                 "St10cm", "Target")
 # Preparing the simulation study to check if we need to change something -----
 
-for (rep in 38:40){
+for (rep in 41:51){
   passo_fundo_data$Target <- read.csv(glue('02_simulation_study/server_simulation/input_data/scenario1/scenario1_arimax100_nbinomial_rep{rep}.csv'))[,-1]
   data_source <- 'p = 1'
   association <- 'Scenario 1'

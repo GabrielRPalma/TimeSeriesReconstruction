@@ -571,10 +571,10 @@ plot_and_check_performance <- function(test_response_variable,
   
 }
 
-theme_new <- function(base_size = 14, base_family = "Arial"){
+theme_new <- function(base_size = 16, base_family = "Arial"){
   theme_minimal(base_size = base_size, base_family = base_family) %+replace%
     theme(
-      axis.text = element_text(size = 12, colour = "grey30"),
+      axis.text = element_text(size = 16, colour = "grey30"),
       legend.key=element_rect(colour=NA, fill =NA),
       axis.line = element_line(colour = 'black'),
       axis.ticks =         element_line(colour = "grey20"),
@@ -733,7 +733,7 @@ get_arimax_estimates <- function(ar_response,
       arimax_model <- data %>% 
         model(ARIMA(log_aphids ~ 1 + lag(tmax, ar_climate) + lag(tmin, ar_climate) + lag(tmean, ar_climate) + 
                       lag(pmm, ar_climate) + lag(Ur, ar_climate) +
-                      tmax+ tmin + tmean + 
+                      tmax + tmin + tmean + 
                       pmm + Ur + pdq(ar_response, 0, 0)))
       arimax_estimates <- coef(arimax_model)$estimate 
       arimax_sigma2 <- arimax_model[[1]][[1]]$fit$fit$sigma2[[1]]
@@ -1482,4 +1482,311 @@ obtain_all_approaches_performance <- function(data_source,
   return(results)
 }
 
+####### Charles suggestion ######
+obtain_lags_and_climate_approaches_performance <- function(data_source, 
+                                                           association, 
+                                                           time_series){
+  # This function obtain the performance of all approaches used to predict the time series of insects
+  #based on climate time series using the algorithms: Lasso, Light GBM and Random Forests.
+  # Inputs:
+  #       data_source: The source of the dataset (i.e. Coxilha, Passo Fundo, ARIMAX(1, 0, 0), ARIMAX(3, 0, 0)).
+  #       association: The climate time series that are being used (i.e. No influence of any climate time series for simulation study).
+  #       time_series: The climate and target time series used for predictions.
+  # Outputs:
+  #       performance_dataset: A dataset containing the performances of all approaches per learning algorithm for the chosen scenario.
+  performance_dataset <- data.frame(Approach = NA, 
+                                    Method = NA, 
+                                    Data_source = NA,
+                                    Association = NA,
+                                    Corr = NA,RSME = NA, 
+                                    Initial_training_samples = NA, 
+                                    Testing_samples = NA)
+  
+  ####################################################################################
+  ############ Obtaining performance of the lag 3 approach ##########################
+  ####################################################################################
+  time_series_size <- nrow(time_series)
+  # Training with few samples (20 observations)
+  ## Light GBM
+  m <- 3
+  n <- 30
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Light GBM')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 3 lags',
+                                     Method = 'Light GBM', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## RandomForest
+  m <- 3
+  n <- 30
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'RandomForest')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 3 lags',
+                                     Method = 'Random Forests', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## Lasso 
+  m <- 3
+  n <- 30
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Lasso')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 3 lags',
+                                     Method = 'Lasso', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  # Training with more samples (60 observations) -----
+  ## Light GBM
+  m <- 3
+  n <- 60
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Light GBM')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 3 lags',
+                                     Method = 'Light GBM', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## RandomForest
+  m <- 3
+  n <- 60
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'RandomForest')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 3 lags',
+                                     Method = 'Random Forests', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## Lasso 
+  m <- 3
+  n <- 60
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Lasso')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 3 lags',
+                                     Method = 'Lasso', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ####################################################################################
+  ############ Obtaining performance of the lag 6 approach ##########################
+  ####################################################################################
+  # Training with few samples (20 observations)
+  ## Light GBM
+  m <- 6
+  n <- 30
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Light GBM')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 6 lags',
+                                     Method = 'Light GBM', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## RandomForest
+  m <- 6
+  n <- 30
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'RandomForest')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 6 lags',
+                                     Method = 'Random Forests', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## Lasso 
+  m <- 6
+  n <- 30
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Lasso')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 6 lags',
+                                     Method = 'Lasso', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  # Training with more samples (60 observations) -----
+  ## Light GBM
+  m <- 6
+  n <- 60
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Light GBM')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 6 lags',
+                                     Method = 'Light GBM', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## RandomForest
+  m <- 6
+  n <- 60
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'RandomForest')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 6 lags',
+                                     Method = 'Random Forests', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  
+  ## Lasso 
+  m <- 6
+  n <- 60
+  test_response_variable <- time_series$Target[(n+1):time_series_size]
+  naive_approach_delay_3 <- naive_approach_all_covariables_lags_simulation(n = n - m, 
+                                                                           test_response_variable = 
+                                                                             test_response_variable, 
+                                                                           m = m, 
+                                                                           data = time_series,
+                                                                           method = 'Lasso')
+  obtained_performance <- data.frame(Approach = 'All climate time series + 6 lags',
+                                     Method = 'Lasso', 
+                                     Data_source = data_source,
+                                     Association = association,
+                                     Corr = naive_approach_delay_3$corr,
+                                     RSME = naive_approach_delay_3$rsme, 
+                                     Initial_training_samples = as.character(n), 
+                                     Testing_samples = length(test_response_variable))
+  performance_dataset <- rbind(performance_dataset, obtained_performance)
+  performance_dataset <- performance_dataset %>% drop_na()
+  
+  return(performance_dataset)
+}
+
+naive_approach_all_covariables_lags_simulation <- function(n, test_response_variable, m, 
+                                                           method, data){
+  # This function obtains the prediction and the performance of the
+  #naive approach with all covariables as the main function
+  data_lag <- get_response_matrix(response_variable = data$Target, m = m)[-1,]
+  data_lag <- as.data.frame(data_lag)
+  colnames(data_lag) <- c(paste0('y', 1:(m)), 'Target')
+  data <- cbind(data[-c(1:m), ] %>% 
+                  dplyr::select(-Target), data_lag)
+  
+  rf_model_original_predictions <- NULL
+  weeks <- seq(n, nrow(data)-1, 1)
+  index <- 1
+  for(i in weeks) {
+    ## Learning algorithm predictions
+    rf_model_original_predictions[index] <- as.numeric(get_learning_algorithms_performance(
+      train_dataset = data[1:i,], 
+      method = method, 
+      test_dataset = data[(i+1),]))
+    index <- index + 1
+  }
+  performance <- plot_and_check_performance(test_response_variable = test_response_variable, 
+                                            predictions = rf_model_original_predictions, 
+                                            do_plot = FALSE)
+  result <- list()
+  result$corr <- performance$obtained_cor
+  result$rsme <- performance$obtained_smse
+  result$predictions <- rf_model_original_predictions
+  
+  return(result)
+  
+}
 
